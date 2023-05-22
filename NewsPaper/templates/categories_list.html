@@ -1,0 +1,17 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+
+{% for category in categories %}
+  <h2>{{ category.category_title }}</h2>
+
+  {% if user.is_authenticated %}
+    <a href="{% url 'toggle_subscription' category_id=category.id %}">
+
+      {% if user in category.subscribers.all %}Отписаться{% else %}Подписаться{% endif %}
+
+    </a>
+  {% endif %}
+{% endfor %}
+
+{% endblock %}

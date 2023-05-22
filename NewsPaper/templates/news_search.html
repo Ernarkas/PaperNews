@@ -1,0 +1,18 @@
+{% extends 'flatpages/default.html' %}
+
+{% block content %}
+  <h1>Поиск новостей:</h1>
+
+  <form method="get">
+    {{ form.as_p }}
+    <button type="submit">Искать</button>
+  </form>
+
+  {% for post in posts %}
+    <div>
+      <h2> {{ post.title }}</h2>
+      <p>{{ post.author.user.username }}</p>
+      <p>{{ post.add_time }}</p>
+    </div>
+  {% endfor %}
+{% endblock %}
